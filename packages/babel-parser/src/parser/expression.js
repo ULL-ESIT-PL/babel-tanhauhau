@@ -2124,6 +2124,7 @@ export default class ExpressionParser extends LValParser {
   // are not identifiers and cannot contain escape sequences.
 
   parseIdentifier(liberal?: boolean): N.Identifier {
+    debugger;
     const node = this.startNode();
     const name = this.parseIdentifierName(node.start, liberal);
 
@@ -2139,6 +2140,7 @@ export default class ExpressionParser extends LValParser {
 
   parseIdentifierName(pos: number, liberal?: boolean): string {
     let name: string;
+    debugger;
 
     if (this.match(tt.name)) {
       name = this.state.value;
@@ -2156,6 +2158,8 @@ export default class ExpressionParser extends LValParser {
         context.pop();
       }
     } else {
+      console.error(this.state.type); // current token
+      console.error(this.lookahead().type); // next token
       throw this.unexpected();
     }
 

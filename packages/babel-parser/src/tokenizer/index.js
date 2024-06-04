@@ -633,7 +633,7 @@ export default class Tokenizer extends ParserErrors {
     if (next === code) {
       size =
         code === charCodes.greaterThan &&
-        this.input.charCodeAt(this.state.pos + 2) === charCodes.greaterThan
+          this.input.charCodeAt(this.state.pos + 2) === charCodes.greaterThan
           ? 3
           : 2;
       if (this.input.charCodeAt(this.state.pos + size) === charCodes.equalsTo) {
@@ -889,8 +889,13 @@ export default class Tokenizer extends ParserErrors {
         return;
 
       case charCodes.atSign:
-        ++this.state.pos;
-        this.finishToken(tt.at);
+        // if the next character is a `@`
+        if (this.input.charCodeAt(this.state.pos + 1) === charCodes.atSign) {
+          // create `tt.atat` instead
+          this.finishOp(tt.atat, 2);
+        } else {
+          this.finishOp(tt.at, 1);
+        }
         return;
 
       case charCodes.numberSign:
@@ -924,7 +929,7 @@ export default class Tokenizer extends ParserErrors {
   readRegexp(): void {
     const start = this.state.pos;
     let escaped, inClass;
-    for (;;) {
+    for (; ;) {
       if (this.state.pos >= this.length) {
         throw this.raise(start, Errors.UnterminatedRegExp);
       }
@@ -1002,10 +1007,10 @@ export default class Tokenizer extends ParserErrors {
       radix === 16
         ? allowedNumericSeparatorSiblings.hex
         : radix === 10
-        ? allowedNumericSeparatorSiblings.dec
-        : radix === 8
-        ? allowedNumericSeparatorSiblings.oct
-        : allowedNumericSeparatorSiblings.bin;
+          ? allowedNumericSeparatorSiblings.dec
+          : radix === 8
+            ? allowedNumericSeparatorSiblings.oct
+            : allowedNumericSeparatorSiblings.bin;
 
     let invalid = false;
     let total = 0;
@@ -1223,7 +1228,7 @@ export default class Tokenizer extends ParserErrors {
   readString(quote: number): void {
     let out = "",
       chunkStart = ++this.state.pos;
-    for (;;) {
+    for (; ;) {
       if (this.state.pos >= this.length) {
         throw this.raise(this.state.start, Errors.UnterminatedString);
       }
@@ -1257,7 +1262,7 @@ export default class Tokenizer extends ParserErrors {
     let out = "",
       chunkStart = this.state.pos,
       containsInvalid = false;
-    for (;;) {
+    for (; ;) {
       if (this.state.pos >= this.length) {
         throw this.raise(this.state.start, Errors.UnterminatedTemplate);
       }
@@ -1266,7 +1271,7 @@ export default class Tokenizer extends ParserErrors {
         ch === charCodes.graveAccent ||
         (ch === charCodes.dollarSign &&
           this.input.charCodeAt(this.state.pos + 1) ===
-            charCodes.leftCurlyBrace)
+          charCodes.leftCurlyBrace)
       ) {
         if (this.state.pos === this.state.start && this.match(tt.template)) {
           if (ch === charCodes.dollarSign) {
