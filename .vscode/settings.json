@@ -1,0 +1,7 @@
+{
+  "javascript.validate.enable": false, // Disable built-in validation
+  "typescript.validate.enable": true, // Enable TypeScript validation
+  "files.associations": {
+    "*.js": "typescript" // Associate .js files with TypeScript
+  }
+}
