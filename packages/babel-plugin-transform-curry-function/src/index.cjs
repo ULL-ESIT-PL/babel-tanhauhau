@@ -10,35 +10,10 @@ module.exports = declare(api => {
   return {
     name: "transform-literals",
 
-    /* Tan's code
-    visitor: {
-      FunctionDeclaration(path) {
-        if (path.get("curry").node) {
-          // const foo = curry(function () { ... });
-          const functionName = path.get("id.name").node;
-          path.node.id = undefined;
-          path.node.curry = false;
-
-          path.replaceWith(
-            t.variableDeclaration("const", [
-              t.variableDeclarator(
-                t.identifier(functionName),
-                t.callExpression(this.addHelper("currying"), [
-                  t.toExpression(path.node),
-                ]),
-              ),
-            ]),
-          );
-
-          // hoist it
-          const node = path.node;
-          const currentScope = path.scope.path;
-          path.remove();
-          currentScope.unshiftContainer("body", node);
-        }
-      },
-    },
-    */
+    /* Tan's code is at file 
+    prefix: /Users/casianorodriguezleon/campus-virtual/2122/learning/compiler-learning/babel-tanhauhau/
+    packages/babel-plugin-transform-curry-function/src/index.js
+     */
     visitor: {
       FunctionDeclaration(path) {
         if (path.get("curry").node) { 
