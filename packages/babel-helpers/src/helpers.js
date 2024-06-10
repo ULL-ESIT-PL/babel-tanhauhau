@@ -2164,3 +2164,20 @@ helpers.wrapRegExp = helper("7.2.6")`
     return _wrapRegExp.apply(this, arguments);
   }
 `;
+
+helpers.currying = helper("7.6.0")`
+  export default function currying(fn) {
+    const numParamsRequired = fn.length;
+    function curryFactory(params) {
+      return function (...args) {
+        const newParams = params.concat(args);
+        if (newParams.length >= numParamsRequired) {
+          return fn(...newParams);
+        }
+        return curryFactory(newParams);
+      }
+    }
+    return curryFactory([]);
+  }
+`;
+
