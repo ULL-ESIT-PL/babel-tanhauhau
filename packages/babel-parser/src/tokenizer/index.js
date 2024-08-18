@@ -143,6 +143,7 @@ export default class Tokenizer extends ParserErrors {
   // Move to the next token
 
   next(): void {
+    debugger;
     if (!this.isLookahead) {
       this.checkKeywordEscapes();
       if (this.options.tokens) {
@@ -177,6 +178,7 @@ export default class Tokenizer extends ParserErrors {
   // TODO
 
   lookahead(): State {
+    debugger;
     const old = this.state;
     this.state = old.clone(true);
 

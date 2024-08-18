@@ -89,5 +89,8 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "dependencies": {
+    "browserslist": "^4.23.1"
   }
 }

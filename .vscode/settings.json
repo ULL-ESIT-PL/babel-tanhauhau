@@ -3,5 +3,6 @@
   "typescript.validate.enable": true, // Enable TypeScript validation
   "files.associations": {
     "*.js": "typescript" // Associate .js files with TypeScript
-  }
+  },
+  "github.copilot.chat.localeOverride": "en"
 }

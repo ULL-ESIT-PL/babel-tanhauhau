@@ -53,6 +53,7 @@ export default class StatementParser extends ExpressionParser {
     program.interpreter = this.parseInterpreterDirective();
 
     this.parseBlockBody(program, true, true, tt.eof);
+    debugger;
 
     if (
       this.inModule &&

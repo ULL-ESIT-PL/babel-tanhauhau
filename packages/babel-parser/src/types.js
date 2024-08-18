@@ -167,6 +167,7 @@ export type BodilessFunctionOrMethodBase = HasDecorators & {
   body: BlockStatement,
   generator: boolean,
   async: boolean,
+  curry: boolean, // TODO: Not in spec
 
   // TODO: All not in spec
   expression: boolean,
