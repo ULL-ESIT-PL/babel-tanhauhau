@@ -9,7 +9,7 @@ if (!filename) {
   console.error("no filename specified");
 } else {
   var file = fs.readFileSync(filename, "utf8");
-  var ast = parser.parse(file);
+  var ast = parser.parse(file, { tokens: true});
 
   console.log(JSON.stringify(ast, null, "  "));
 }
