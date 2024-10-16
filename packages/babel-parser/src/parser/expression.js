@@ -2076,7 +2076,17 @@ export default class ExpressionParser extends LValParser {
         }
       }
 
-      elts.push(this.parseExprListItem(allowEmpty, refExpressionErrors));
+      // Code added by Adrián Mora Rodríguez
+      if (this.match(tt._else)) {
+        const elseNode = this.startNode(); // Crear un nuevo nodo para el else
+        this.next(); // Consumir el token else
+        const elseExpr = this.parseMaybeAssign(); // Analizar la expresión del else
+        elseNode.alternate = elseExpr; // Establecer la expresión alterna
+        elts.push(elseNode); // Agregar el nodo al arreglo de elementos
+    } else {
+        elts.push(this.parseExprListItem(allowEmpty, refExpressionErrors)); // Analizar el siguiente elemento
+    }
+      //elts.push(this.parseExprListItem(allowEmpty, refExpressionErrors));
     }
     return elts;
   }
