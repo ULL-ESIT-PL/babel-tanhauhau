@@ -457,7 +457,10 @@ export default class LValParser extends NodeUtils {
           "parenthesized expression",
         );
         break;
-
+      // This case allows for assigning to a function. At the moment, assigning to a method is not allowed.
+      case "CallExpression":
+        if (expr.callee.type === "Identifier")
+          break;
       default: {
         this.raise(
           expr.start,
