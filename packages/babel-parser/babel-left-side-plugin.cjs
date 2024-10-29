@@ -1,4 +1,5 @@
 const parser = require("./lib/index.js");
+const types = require('@babel/types');
 
 module.exports = function leftSidePlugin(babel) {
   return {

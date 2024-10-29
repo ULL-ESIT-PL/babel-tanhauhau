@@ -890,7 +890,13 @@ export default class Tokenizer extends ParserErrors {
 
       case charCodes.atSign:
         ++this.state.pos;
-        this.finishToken(tt.at);
+        // Next char is @, create @@.
+        if (this.input.charCodeAt(this.state.pos) == charCodes.atSign) {
+          ++this.state.pos;
+          this.finishToken(tt.atat);
+        } else {
+          this.finishToken(tt.at);
+        }
         return;
 
       case charCodes.numberSign:
