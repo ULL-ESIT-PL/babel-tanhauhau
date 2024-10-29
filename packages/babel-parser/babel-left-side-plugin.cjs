@@ -18,8 +18,21 @@ module.exports = function leftSidePlugin(babel) {
           const functionAssign = babel.types.identifier("assign");
           path.replaceWith(babel.types.callExpression(functionAssign, assignArgs));
         }
-      }
-      // TODO: Change FunctionDeclaration to the form of const foo = functionObject(function() {}) 
+      },
+      FunctionDeclaration(path) {
+        const node = path.node;
+        if (node.assignable) {
+          node.assignable = false;
+          const identifier = types.identifier("functionObject");
+          const funId = node.id;
+          node.id = null;
+          // Replace the FunctionDeclaration with FunctionExpression.
+          const funAsExpr = types.functionExpression(null, node.params, node.body);
+          const callExpression = types.callExpression(identifier, [funAsExpr]);
+          const varDeclarator = types.variableDeclarator(funId, callExpression);
+          path.replaceWith(types.variableDeclaration("const", [varDeclarator]));
+        }
+      }      
    }
   }
 }
