@@ -121,12 +121,10 @@ import jsx from "./plugins/jsx";
 import typescript from "./plugins/typescript";
 import placeholders from "./plugins/placeholders";
 import v8intrinsic from "./plugins/v8intrinsic";
-import defaultVector from "./plugins/defaultvector";
 
 // NOTE: order is important. estree must come first; placeholders must come last.
 export const mixinPlugins: { [name: string]: MixinPlugin } = {
   estree,
-  defaultVector,
   jsx,
   flow,
   typescript,
