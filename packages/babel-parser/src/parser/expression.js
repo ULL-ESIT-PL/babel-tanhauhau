@@ -2078,7 +2078,6 @@ export default class ExpressionParser extends LValParser {
 
       // Code added by Adrián Mora Rodríguez
       if (this.match(tt._else)) {
-        console.log("ELSE");
         this.next(); // Consume el token "else"
         // Ahora esperamos una expresión o función después de "else"
         const elseExpr = this.parseExpression();  // Analiza la expresión después de "else"
