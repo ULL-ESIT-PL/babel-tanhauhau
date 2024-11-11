@@ -2,7 +2,7 @@
   "name": "babel-plugin-left-side-plugin",
   "version": "1.0.0",
   "description": "Support plugin for the assignable functions",
-  "main": "src/plugin.js",
+  "main": "lib/plugin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

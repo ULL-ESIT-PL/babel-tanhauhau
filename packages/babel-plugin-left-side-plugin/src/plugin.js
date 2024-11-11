@@ -1,13 +1,13 @@
-//const parser = require("./lib/index.js");
+const parser = require("../../babel-parser/lib/index.js");
 const types = require('@babel/types');
-const template = require('@babel/template');
-const SUPPORT_TEMPLATE = template('const {assign, functionObject} = require("babel-plugin-left-side-support");');
+import template from "@babel/template";
+const SUPPORT_TEMPLATE = template('const {assign, functionObject} = require("babel-plugin-left-side-support");')();
 
 module.exports = function leftSidePlugin(babel) {
   return {
-    //parserOverride(code, opts) {
-    //  return parser.parse(code, opts);
-    //},
+    parserOverride(code, opts) {
+      return parser.parse(code, opts);
+    },
     visitor: {
       AssignmentExpression(path) {
         const node = path.node;
