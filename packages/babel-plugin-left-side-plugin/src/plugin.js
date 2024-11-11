@@ -17,7 +17,8 @@ module.exports = function leftSidePlugin(babel) {
           const callee = node.left.callee;
           const args = node.left.arguments;
           const rvalue = node.right;
-          const assignArgs = [callee, ...args, rvalue];
+          const argsArray = types.arrayExpression(args);
+          const assignArgs = [callee, argsArray, rvalue];
           const functionAssign = babel.types.identifier("assign");
           path.replaceWith(babel.types.callExpression(functionAssign, assignArgs));
         }
