@@ -1,6 +1,7 @@
 const parser = require("../../babel-parser/lib/index.js");
 const types = require('@babel/types');
 import template from "@babel/template";
+// TODO: Switch to the scoped name when publishing the package.
 const SUPPORT_TEMPLATE = template('const {assign, functionObject} = require("babel-plugin-left-side-support");')();
 
 module.exports = function leftSidePlugin(babel) {
