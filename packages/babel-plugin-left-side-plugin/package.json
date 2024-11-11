@@ -1,0 +1,11 @@
+{
+  "name": "babel-plugin-left-side-plugin",
+  "version": "1.0.0",
+  "description": "Support plugin for the assignable functions",
+  "main": "src/plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pablo Santana Gonzalez <alu0101480541@ull.edu.es>",
+  "license": "ISC"
+}
