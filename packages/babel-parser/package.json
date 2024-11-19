@@ -1,5 +1,5 @@
 {
-  "name": "@babel/parser",
+  "name": "@ULL-ESIT-PL/parser-left-side",
   "version": "7.10.2",
   "description": "A JavaScript parser",
   "author": "Sebastian McKenzie <sebmck@gmail.com>",

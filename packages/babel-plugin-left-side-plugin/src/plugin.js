@@ -1,8 +1,10 @@
-const parser = require("../../babel-parser/lib/index.js");
-const types = require('@babel/types');
+const parser = require("@ULL-ESIT-PL/parser-left-side");
+const types = require("@babel/types");
 import template from "@babel/template";
 // TODO: Switch to the scoped name when publishing the package.
-const SUPPORT_TEMPLATE = template('const {assign, functionObject} = require("babel-plugin-left-side-support");')();
+const SUPPORT_TEMPLATE = template(
+  'const {assign, functionObject} = require("@ULL-ESIT-PL/babel-plugin-left-side-support");',
+)();
 
 module.exports = function leftSidePlugin(babel) {
   return {
@@ -20,7 +22,9 @@ module.exports = function leftSidePlugin(babel) {
           const argsArray = types.arrayExpression(args);
           const assignArgs = [callee, argsArray, rvalue];
           const functionAssign = babel.types.identifier("assign");
-          path.replaceWith(babel.types.callExpression(functionAssign, assignArgs));
+          path.replaceWith(
+            babel.types.callExpression(functionAssign, assignArgs),
+          );
         }
       },
       FunctionDeclaration(path) {
@@ -31,7 +35,11 @@ module.exports = function leftSidePlugin(babel) {
           const funId = node.id;
           node.id = null;
           // Replace the FunctionDeclaration with FunctionExpression.
-          const funAsExpr = types.functionExpression(null, node.params, node.body);
+          const funAsExpr = types.functionExpression(
+            null,
+            node.params,
+            node.body,
+          );
           const callExpression = types.callExpression(identifier, [funAsExpr]);
           const varDeclarator = types.variableDeclarator(funId, callExpression);
           path.replaceWith(types.variableDeclaration("const", [varDeclarator]));
@@ -41,7 +49,7 @@ module.exports = function leftSidePlugin(babel) {
         const node = path.node;
         // Perhaps checking when it's actually needed? Write on exit if an assignable function was created.
         node.body.unshift(SUPPORT_TEMPLATE);
-      }     
-   }
-  }
-}
+      },
+    },
+  };
+};

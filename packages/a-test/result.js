@@ -1,7 +1,7 @@
 const {
   assign,
-  functionObject
-} = require("../babel-plugin-left-side-support"); // Changed manually until the module is published
+  functionObject,
+} = require("@ULL-ESIT-PL/babel-plugin-left-side-support");
 
 const foo = functionObject(function (bar) {
   return bar * 2;

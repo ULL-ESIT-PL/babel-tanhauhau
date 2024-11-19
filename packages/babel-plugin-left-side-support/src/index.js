@@ -1,7 +1,7 @@
-const {functionObject} = require("./function-object");
-const {assign} = require("./assign");
+const { functionObject } = require("./function-object");
+const { assign } = require("./assign");
 
 module.exports = {
   assign,
-  functionObject
-}
+  functionObject,
+};

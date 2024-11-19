@@ -1,11 +1,11 @@
-import {parse} from "../lib";
+import { parse } from "../lib";
 
 function getParser(code) {
-  return () => parse(code, {sourceType: "module"});
+  return () => parse(code, { sourceType: "module" });
 }
 
-describe("left side function assignment", function() {
-  it("should parse", function() {
+describe("left side function assignment", function () {
+  it("should parse", function () {
     expect(getParser("foo(5) = 10")()).toMatchSnapshot();
   });
   /*

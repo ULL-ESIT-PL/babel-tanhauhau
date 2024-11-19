@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-left-side-support",
+  "name": "@ULL-ESIT-PL/babel-plugin-left-side-support",
   "version": "1.0.0",
   "description": "Support for the left side plugin",
   "main": "lib/index.js",
