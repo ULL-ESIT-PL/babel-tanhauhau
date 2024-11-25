@@ -30,6 +30,11 @@
         "# Making sure we only upload the function assignment (left side) packages",
         "packages/@(!(babel-plugin-left-side-plugin|babel-plugin-left-side-support|babel-parser))/**"
       ]
+    },
+    "version": {
+      "ignoreChanges": [
+        "packages/@(!(babel-plugin-left-side-plugin|babel-plugin-left-side-support|babel-parser))/**"
+      ]
     }
   },
   "packages": [
