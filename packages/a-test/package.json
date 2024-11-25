@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@ULL-ESIT-PL/babel-plugin-left-side-plugin": "1.0.0",
-    "@ULL-ESIT-PL/babel-plugin-left-side-support": "1.0.0"
+    "@ull-esit-pl/babel-plugin-left-side-plugin": "1.0.0",
+    "@ull-esit-pl/babel-plugin-left-side-support": "1.0.0"
   },
   "author": "Pablo Santana Gonzalez <alu0101480541@ull.edu.es>",
   "license": "ISC"

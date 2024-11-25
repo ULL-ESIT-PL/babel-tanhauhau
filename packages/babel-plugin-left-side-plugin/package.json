@@ -1,5 +1,5 @@
 {
-  "name": "@ULL-ESIT-PL/babel-plugin-left-side-plugin",
+  "name": "@ull-esit-pl/babel-plugin-left-side-plugin",
   "version": "1.0.0",
   "description": "Support plugin for the assignable functions",
   "main": "lib/plugin.js",
@@ -7,12 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@ULL-ESIT-PL/parser-left-side": "^7.10.2"
+    "@ull-esit-pl/parser-left-side": "^1.0.0"
   },
   "publishConfig": {
     "access": "public"
   },
   "author": "Pablo Santana Gonzalez <alu0101480541@ull.edu.es>",
   "license": "ISC",
-  "gitHead": "d644bae5abe3d0a6bf817d34addb9322426d69bb"
+  "gitHead": "df1dbf5d265ad3170234dff2e06cb385e08effc8"
 }

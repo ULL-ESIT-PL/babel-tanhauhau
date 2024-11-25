@@ -1,5 +1,5 @@
 {
-  "name": "@ULL-ESIT-PL/parser-left-side",
+  "name": "@ull-esit-pl/parser-left-side",
   "version": "1.0.0",
   "description": "A JavaScript parser",
   "author": "Sebastian McKenzie <sebmck@gmail.com>",
@@ -40,5 +40,5 @@
   "bin": {
     "parser": "./bin/babel-parser.js"
   },
-  "gitHead": "d644bae5abe3d0a6bf817d34addb9322426d69bb"
+  "gitHead": "df1dbf5d265ad3170234dff2e06cb385e08effc8"
 }

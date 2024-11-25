@@ -1,5 +1,5 @@
 {
-  "name": "@ULL-ESIT-PL/babel-plugin-left-side-support",
+  "name": "@ull-esit-pl/babel-plugin-left-side-support",
   "version": "1.0.0",
   "description": "Support for the left side plugin",
   "main": "lib/index.js",
@@ -14,5 +14,5 @@
   },
   "author": "Pablo Santana Gonzalez <alu0101480541@ull.edu.es>",
   "license": "ISC",
-  "gitHead": "d644bae5abe3d0a6bf817d34addb9322426d69bb"
+  "gitHead": "df1dbf5d265ad3170234dff2e06cb385e08effc8"
 }

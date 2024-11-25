@@ -5,6 +5,6 @@ module.exports = {
         return parse(code.opts);
       }
     },*/
-    "@ULL-ESIT-PL/babel-plugin-left-side-plugin",
+    "@ull-esit-pl/babel-plugin-left-side-plugin",
   ],
 };
