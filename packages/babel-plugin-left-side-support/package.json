@@ -9,6 +9,10 @@
   "dependencies": {
     "callable-instance": "2.0.0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Pablo Santana Gonzalez <alu0101480541@ull.edu.es>",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "d644bae5abe3d0a6bf817d34addb9322426d69bb"
 }
