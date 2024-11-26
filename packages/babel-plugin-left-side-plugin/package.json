@@ -9,8 +9,14 @@
   "dependencies": {
     "@ull-esit-pl/parser-left-side": "^1.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ULL-ESIT-PL/babel-tanhauhau/tree/pablo-tfg",
+    "directory": "packages/babel-plugin-left-side-plugin"    
+  },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "author": "Pablo Santana Gonzalez <alu0101480541@ull.edu.es>",
   "license": "ISC",
