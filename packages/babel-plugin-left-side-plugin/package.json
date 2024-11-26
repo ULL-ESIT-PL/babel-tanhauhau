@@ -1,13 +1,14 @@
 {
   "name": "@ull-esit-pl/babel-plugin-left-side-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Support plugin for the assignable functions",
   "main": "lib/plugin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@ull-esit-pl/parser-left-side": "^1.0.0"
+    "@ull-esit-pl/parser-left-side": "^1.0.0",
+    "@ull-esit-pl/babel-plugin-left-side-support": "^1.0.0"
   },
   "repository": {
     "type": "git",
