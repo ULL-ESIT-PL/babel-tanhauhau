@@ -6,6 +6,23 @@ const SUPPORT_TEMPLATE = template(
   'const {assign, functionObject} = require("@ull-esit-pl/babel-plugin-left-side-support");',
 )();
 
+// To avoid repeating code in FunctionDeclaration and FunctionExpression. Transforms the assignable function syntax to valid JS.
+// Returns a CallExpression node with the functionObject call.
+function changeAssignableFunctionToValid(node) {
+  node.assignable = false;
+  const identifier = types.identifier("functionObject");
+  const funId = node.id;
+  node.id = null;
+  // Replace the FunctionDeclaration with FunctionExpression.
+  const funAsExpr = types.functionExpression(
+    null,
+    node.params,
+    node.body,
+  );
+  const callExpression = types.callExpression(identifier, [funAsExpr]);
+  return [funId, callExpression];
+}
+
 module.exports = function leftSidePlugin(babel) {
   return {
     parserOverride(code, opts) {
@@ -15,7 +32,6 @@ module.exports = function leftSidePlugin(babel) {
       AssignmentExpression(path) {
         const node = path.node;
         if (node.operator == "=" && node.left.type == "CallExpression") {
-          // This supposes that the callee is an ID and not a member expression nor another function.
           const callee = node.left.callee;
           const args = node.left.arguments;
           const rvalue = node.right;
@@ -30,19 +46,16 @@ module.exports = function leftSidePlugin(babel) {
       FunctionDeclaration(path) {
         const node = path.node;
         if (node.assignable) {
-          node.assignable = false;
-          const identifier = types.identifier("functionObject");
-          const funId = node.id;
-          node.id = null;
-          // Replace the FunctionDeclaration with FunctionExpression.
-          const funAsExpr = types.functionExpression(
-            null,
-            node.params,
-            node.body,
-          );
-          const callExpression = types.callExpression(identifier, [funAsExpr]);
+          const [funId, callExpression] = changeAssignableFunctionToValid(node);
           const varDeclarator = types.variableDeclarator(funId, callExpression);
           path.replaceWith(types.variableDeclaration("const", [varDeclarator]));
+        }
+      },
+      FunctionExpression(path) {
+        const node = path.node;
+        if (node.assignable) {
+          const [_, callExpression] = changeAssignableFunctionToValid(node);
+          path.replaceWith(callExpression);
         }
       },
       Program(path) {
