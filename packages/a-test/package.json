@@ -4,11 +4,15 @@
   "description": "Support plugin for the assignable functions",
   "main": "lib/plugin.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "dependencies": {
     "@ull-esit-pl/babel-plugin-left-side-plugin": "^1.0.0",
-    "@ull-esit-pl/babel-plugin-left-side-support": "^1.0.0"
+    "@ull-esit-pl/babel-plugin-left-side-support": "^1.0.0",
+    "@ull-esit-pl/parser-left-side": "^1.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   },
   "author": "Pablo Santana Gonzalez <alu0101480541@ull.edu.es>",
   "license": "ISC"

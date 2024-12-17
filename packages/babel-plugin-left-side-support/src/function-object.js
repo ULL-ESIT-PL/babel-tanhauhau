@@ -44,7 +44,10 @@ class FunctionObject extends CallableInstance {
         const arg = args[i];
         if (currentFunctionObject?.cache && currentFunctionObject.cache.has(arg)) {
           if (debug) console.log(`Cached value! ${currentFunctionObject.cache.get(arg)}`);
-          if (i + 1 === args.length) return currentFunctionObject.cache.get(arg); // Value in cache, return it.
+          if (i + 1 === args.length) {
+            if (currentFunctionObject.cache.get(arg).cache !== undefined) break; // St
+            return currentFunctionObject.cache.get(arg); // Value in cache, return it.
+          }
           currentFunctionObject = currentFunctionObject.cache.get(arg);
         } else {
           break; // Default to the original rawFunction.

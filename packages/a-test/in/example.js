@@ -3,3 +3,4 @@ function @@ foo(bar) {
 }
 foo(10) = 5;
 console.log(foo(10));
+console.log(foo(40))

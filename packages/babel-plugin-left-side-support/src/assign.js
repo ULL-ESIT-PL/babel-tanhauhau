@@ -25,9 +25,17 @@ function assign(f, cacheArgs, cacheValue) {
     }
     // If there are more arguments
     //console.log(f)
-    const auxF = functionObject(f.rawFunction ? f.rawFunction : f);
+    let auxF = f.getCache(cacheArgument);
+    if (!f.cache.has(cacheArgument)) { 
+      const newFunctionObject = functionObject(f.rawFunction === undefined ? f : f.rawFunction);
+      f.setCache(cacheArgument, newFunctionObject);
+      auxF = f.getCache(cacheArgument);
+    } else if (!auxF.cache) { // If auxF is not a FunctionObject, turn it into one. Always fallback to the original rawFunction.
+      auxF = functionObject(f.rawFunction ? f.rawFunction : f)
+    }
+    //functionObject(f.rawFunction ? f.rawFunction : f);
     //console.log(f(cacheArgument))
-    f.setCache(cacheArgument, auxF);
+    //f.setCache(cacheArgument, auxF);
     //console.error(`assign f.cache["${cacheArgument}"] = ${auxF}`);
     f = auxF;
   }

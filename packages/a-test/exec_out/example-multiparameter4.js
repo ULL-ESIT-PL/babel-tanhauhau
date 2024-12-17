@@ -1,0 +1,3 @@
+Something else
+NaN
+NaN
