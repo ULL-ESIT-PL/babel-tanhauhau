@@ -26,9 +26,16 @@
         "# We ignore every JSON file, except for native-modules, built-ins and plugins defined in babel-preset-env/data.",
         "@(!(native-modules|built-ins|plugins|package)).json",
         "# Until the ESLint packages version are aligned with Babel's, we ignore them",
-        "eslint/**"
+        "eslint/**",
+        "# Only upload the default vector parser and plugin",
+        "packages/@(!(babel-parser|babel-plugin-default-vector))/**"
       ]
     }
+  },
+  "version": {
+    "ignoreChanges": [
+      "packages/@(!(babel-parser|babel-plugin-default-vector))/**"
+    ]
   },
   "packages": [
     "codemods/*",

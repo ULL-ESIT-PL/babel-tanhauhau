@@ -1,12 +1,13 @@
 {
-  "name": "@babel/parser",
-  "version": "7.10.2",
+  "name": "@ull-esit-pl/parser-default-vector",
+  "version": "1.0.0",
   "description": "A JavaScript parser",
   "author": "Sebastian McKenzie <sebmck@gmail.com>",
   "homepage": "https://babeljs.io/",
   "license": "MIT",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "babel",
@@ -18,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/babel/babel.git",
+    "url": "https://github.com/ULL-ESIT-PL/babel-tanhauhau/tree/Adrian-tfg",
     "directory": "packages/babel-parser"
   },
   "main": "lib/index.js",
