@@ -24,5 +24,6 @@
     "tc39",
     "ecmascript",
     "@babel/plugin"
-  ]
+  ],
+  "gitHead": "321ef1ec250e4e2ee6e6de2781c23a35759add49"
 }
