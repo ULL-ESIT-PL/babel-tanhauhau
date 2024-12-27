@@ -1,6 +1,6 @@
 {
   "name": "@ull-esit-pl/parser-left-side",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A JavaScript parser",
   "author": "Sebastian McKenzie <sebmck@gmail.com>",
   "homepage": "https://babeljs.io/",

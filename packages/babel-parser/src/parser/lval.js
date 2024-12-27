@@ -458,7 +458,19 @@ export default class LValParser extends NodeUtils {
         );
         break;
       case "CallExpression":
-        // TODO: Check the method checkLVal to see if this can be more similar to the rest of the cases.
+        if (expr.arguments.length === 0) {
+          this.raise(
+           expr.start, 
+           Errors.InvalidLhsBinding, 
+           (expr?.callee?.type === "Identifier")? `"${expr.callee.name}"`: "", 
+          );
+        }
+        this.checkLVal(
+          expr.callee,
+          bindingType,
+          checkClashes,
+          ""
+        );
         break;
       default: {
         this.raise(
