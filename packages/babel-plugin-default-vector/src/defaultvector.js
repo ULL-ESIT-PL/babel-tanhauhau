@@ -1,4 +1,4 @@
-const parser = require("./lib/index.js");
+const parser = require("../../parser-default-vector/lib/index.js");
 const types = require('@babel/types');
 module.exports = function defaultVector({ types: t }) {
   return {

@@ -1,11 +1,11 @@
 {
   "name": "@ull-esit-pl/babel-plugin-default-vector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Plugin to transform default vector syntax",
   "author": "Adrian Mora Rodriguez",
   "main": "src/defaultvector.js",
   "dependencies": {
-    "@ull-esit-pl/parser-default-vector": "^1.0.0"
+    "@ull-esit-pl/parser-default-vector": "^1.0.2"
   },
   "repository": {
     "type": "git",
