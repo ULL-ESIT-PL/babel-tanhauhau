@@ -41,5 +41,5 @@
   "bin": {
     "parser": "./bin/babel-parser.js"
   },
-  "gitHead": "321ef1ec250e4e2ee6e6de2781c23a35759add49"
+  "gitHead": "8aff5c0ebd08c759386d9f2fcab8e786eccc0904"
 }
