@@ -5,10 +5,6 @@
   "author": "Sebastian McKenzie <sebmck@gmail.com>",
   "homepage": "https://babeljs.io/",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com"
-  },
   "keywords": [
     "babel",
     "javascript",
@@ -17,11 +13,6 @@
     "ecmascript",
     "@babel/parser"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ULL-ESIT-PL/babel-tanhauhau/tree/Adrian-tfg",
-    "directory": "packages/babel-parser"
-  },
   "main": "lib/index.js",
   "types": "typings/babel-parser.d.ts",
   "files": [
@@ -40,6 +31,5 @@
   },
   "bin": {
     "parser": "./bin/babel-parser.js"
-  },
-  "gitHead": "90a8a0b32a9c01986a5a07c6cf39fbff7c0c5886"
+  }
 }
