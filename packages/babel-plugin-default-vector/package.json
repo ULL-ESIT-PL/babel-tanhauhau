@@ -3,12 +3,12 @@
   "version": "1.0.2",
   "description": "Plugin to transform default vector syntax",
   "author": "Adrian Mora Rodriguez",
-  "main": "src/defaultvector.js",
+  "main": "src/defaultvector-new.js",
   "dependencies": {
     "@ull-esit-pl/parser-default-vector": "^1.0.2"
   },
   "scripts": {
-    "test": "jest tests/index.test.js --coverage --config tests/jest.config.js",
+    "test": "jest tests/index.test.js",
     "cov": "npm test; open coverage/lcov-report/index.html"
   },
   "repository": {

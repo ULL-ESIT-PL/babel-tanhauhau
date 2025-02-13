@@ -26,20 +26,20 @@ export type ScopeFlags =
 
 // These flags are meant to be _only_ used inside the Scope class (or subclasses).
 // prettier-ignore
-export const BIND_KIND_VALUE           = 0b00000_0000_01,
-             BIND_KIND_TYPE            = 0b00000_0000_10,
+export const BIND_KIND_VALUE           = 0b00000000001,
+             BIND_KIND_TYPE            = 0b00000000010,
              // Used in checkLVal and declareName to determine the type of a binding
-             BIND_SCOPE_VAR            = 0b00000_0001_00, // Var-style binding
-             BIND_SCOPE_LEXICAL        = 0b00000_0010_00, // Let- or const-style binding
-             BIND_SCOPE_FUNCTION       = 0b00000_0100_00, // Function declaration
-             BIND_SCOPE_OUTSIDE        = 0b00000_1000_00, // Special case for function names as
+             BIND_SCOPE_VAR            = 0b00000000100, // Var-style binding
+             BIND_SCOPE_LEXICAL        = 0b00000001000, // Let- or const-style binding
+             BIND_SCOPE_FUNCTION       = 0b00000010000, // Function declaration
+             BIND_SCOPE_OUTSIDE        = 0b00000100000, // Special case for function names as
                                                    // bound inside the function
              // Misc flags
-             BIND_FLAGS_NONE           = 0b00001_0000_00,
-             BIND_FLAGS_CLASS          = 0b00010_0000_00,
-             BIND_FLAGS_TS_ENUM        = 0b00100_0000_00,
-             BIND_FLAGS_TS_CONST_ENUM  = 0b01000_0000_00,
-             BIND_FLAGS_TS_EXPORT_ONLY = 0b10000_0000_00;
+             BIND_FLAGS_NONE           = 0b00001000000,
+             BIND_FLAGS_CLASS          = 0b00010000000,
+             BIND_FLAGS_TS_ENUM        = 0b00100000000,
+             BIND_FLAGS_TS_CONST_ENUM  = 0b01000000000,
+             BIND_FLAGS_TS_EXPORT_ONLY = 0b10000000000;
 
 // These flags are meant to be _only_ used by Scope consumers
 // prettier-ignore
@@ -74,9 +74,9 @@ export type BindingTypes =
   | typeof BIND_TS_NAMESPACE;
 
 // prettier-ignore
-export const CLASS_ELEMENT_FLAG_STATIC = 0b1_00,
-             CLASS_ELEMENT_KIND_GETTER = 0b0_10,
-             CLASS_ELEMENT_KIND_SETTER = 0b0_01,
+export const CLASS_ELEMENT_FLAG_STATIC = 0b100,
+             CLASS_ELEMENT_KIND_GETTER = 0b010,
+             CLASS_ELEMENT_KIND_SETTER = 0b001,
              CLASS_ELEMENT_KIND_ACCESSOR = CLASS_ELEMENT_KIND_GETTER | CLASS_ELEMENT_KIND_SETTER;
 
 // prettier-ignore
