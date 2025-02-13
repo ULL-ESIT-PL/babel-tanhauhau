@@ -10,4 +10,4 @@ let calendar = [
 //Pushing a new event on an specific date
 calendar[5] = {event: "Reyes Magos", todo: "Regalos"};
 
-console.log(calendar[8]);  // Day 4 do not have an event
+console.log(calendar[3]);  // Day 4 do not have an event

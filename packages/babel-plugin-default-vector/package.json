@@ -7,6 +7,10 @@
   "dependencies": {
     "@ull-esit-pl/parser-default-vector": "^1.0.2"
   },
+  "scripts": {
+    "test": "jest tests/index.test.js --coverage --config tests/jest.config.js",
+    "cov": "npm test; open coverage/lcov-report/index.html"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ULL-ESIT-PL/babel-tanhauhau/tree/Adrian-tfg",

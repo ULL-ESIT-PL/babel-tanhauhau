@@ -1,4 +1,14 @@
 else-and-push
 email
 calendar
-
+concat
+filter
+find
+forEach
+indexOf
+map
+reduce
+slice
+splice
+temperatures
+throw
