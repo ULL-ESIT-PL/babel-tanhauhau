@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const babel = require('@babel/core');
-const myPlugin = require('../src/defaultvector-new.js');  // Cambiar esto si el plugin está en otra ruta
+const myPlugin = require('../src/default.js');  // Cambiar esto si el plugin está en otra ruta
 const { execSync } = require('child_process');
 require("../src/support.js");
 

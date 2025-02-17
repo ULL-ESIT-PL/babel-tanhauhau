@@ -1,6 +1,5 @@
 {
   "plugins": [
-    "../src/defaultvector-new.js",
-    "@babel/plugin-proposal-numeric-separator"
+    "../src/default.js"
   ]
 }

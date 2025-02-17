@@ -1535,10 +1535,11 @@ export default class ExpressionParser extends LValParser {
     const propHash: any = Object.create(null);
     let first = true;
     const node = this.startNode();
-
+    let elseNode = null; // Para almacenar la expresión else
+  
     node.properties = [];
     this.next();
-
+  
     while (!this.eat(close)) {
       if (first) {
         first = false;
@@ -1550,29 +1551,55 @@ export default class ExpressionParser extends LValParser {
           break;
         }
       }
-
+  
+      // Verificar si encontramos `else`
+      if (this.match(tt._else)) {
+        if (elseNode) {
+          this.raise(this.state.start, "Duplicate 'else' clause in object literal");
+        }
+  
+        this.next();
+        elseNode = this.parseExpression();
+  
+        // Si después de `else` hay otra propiedad, es un error
+        if (!this.match(close)) {
+          this.raise(this.state.start, "`else` must be the last property in an object literal.");
+        }
+        continue;
+      }
+  
+      // Si ya se encontró `else`, no debería haber más propiedades
+      if (elseNode) {
+        this.raise(this.state.start, "No properties allowed after 'else' in an object literal.");
+      }
+  
       const prop = this.parseObjectMember(isPattern, refExpressionErrors);
       if (!isPattern) {
-        // $FlowIgnore RestElement will never be returned if !isPattern
         this.checkDuplicatedProto(prop, propHash, refExpressionErrors);
       }
-
-      // $FlowIgnore
+  
       if (prop.shorthand) {
         this.addExtra(prop, "shorthand", true);
       }
-
+  
       node.properties.push(prop);
     }
-
+  
+    // Agregar la propiedad `else` si existe
+    if (elseNode) {
+      node.elseExpression = elseNode;
+    }
+  
     let type = "ObjectExpression";
     if (isPattern) {
       type = "ObjectPattern";
     } else if (isRecord) {
       type = "RecordExpression";
     }
+  
     return this.finishNode(node, type);
   }
+  
 
   isAsyncProp(prop: N.ObjectProperty): boolean {
     return (

@@ -12,3 +12,8 @@ slice
 splice
 temperatures
 throw
+defaultObject
+standarMethods
+propertyManipulation
+inheritance
+edgeCaseMethods
