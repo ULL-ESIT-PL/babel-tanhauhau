@@ -213,6 +213,12 @@ const libBundles = [
     dest: "lib",
     version: require("./packages/babel-parser/package").version,
   },
+  {
+    src: "packages/parser-default-vector",
+    format: "cjs",
+    dest: "lib",
+    version: require("./packages/parser-default-vector/package").version,
+  }
 ];
 
 const standaloneBundle = [
