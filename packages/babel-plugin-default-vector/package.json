@@ -1,6 +1,6 @@
 {
   "name": "@ull-esit-pl/babel-plugin-default-vector",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Plugin to transform default vector syntax",
   "author": "Adrian Mora Rodriguez",
   "main": "src/default.js",
