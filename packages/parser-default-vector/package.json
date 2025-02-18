@@ -1,6 +1,6 @@
 {
   "name": "@ull-esit-pl/parser-default-vector",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A JavaScript parser",
   "author": "Sebastian McKenzie <sebmck@gmail.com>",
   "homepage": "https://babeljs.io/",
@@ -41,5 +41,5 @@
   "bin": {
     "parser": "./bin/babel-parser.js"
   },
-  "gitHead": "7ead8dbc7c03e3412b5a91884b86fdf0b94b6c26"
+  "gitHead": "f8c849038157f63089fd4ef21d1d57e110b33a76"
 }
