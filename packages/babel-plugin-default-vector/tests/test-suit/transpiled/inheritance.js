@@ -17,7 +17,6 @@ console.log(childObj.p); // "parent" (heredada)
 console.log(childObj.q); // "q missing" (heredada pero undefined en parent)
 
 console.log(childObj.r); // "r missing" (no existe en child ni en parent)
-// Sobrescribir propiedad heredada
 
 childObj.p = "child parent";
 console.log(childObj.p); // "child parent"

@@ -5,7 +5,7 @@ let elseExpression = (date) => {
 let calendar = new DefaultObject({
   1: "New Year's Day",
   2: "Valentine's Day",
-  3: undefined,
+  3: "Independence Day",
   "navidad": undefined,
 }, elseExpression, true);
 

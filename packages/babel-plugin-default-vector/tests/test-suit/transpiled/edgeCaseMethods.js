@@ -12,11 +12,9 @@ let obj = new DefaultObject({
 Object.defineProperty(obj, 'hidden', {
   value: "secret",
   enumerable: false
-}); // Agregamos una propiedad con símbolo
-
+});
 const sym = Symbol('sym');
-obj[sym] = "symbol value"; // Recorremos propiedades con for...in (solo las enumerables)
-
+obj[sym] = "symbol value";
 let inKeys = "";
 
 for (let key in obj) {
@@ -24,12 +22,10 @@ for (let key in obj) {
 }
 
 console.log(inKeys.slice(0, inKeys.length - 1)); // "a,b"
-// Obtenemos todas las propiedades (incluyendo no enumerables)
 
-console.log(Object.getOwnPropertyNames(obj).join(',')); // Se espera: "a,b,hidden"
-// Obtenemos las propiedades símbolo
+console.log(Object.getOwnPropertyNames(obj).join(',')); // "a,b,hidden"
 
-console.log(Object.getOwnPropertySymbols(obj).map(s => s.toString()).join(',')); // Se espera: "Symbol(sym)"
+console.log(Object.getOwnPropertySymbols(obj).map(s => s.toString()).join(',')); // "Symbol(sym)"
 
 console.log(obj.hidden); // "secret" (acceso directo a propiedad no enumerable)
 

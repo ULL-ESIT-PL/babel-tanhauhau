@@ -9,14 +9,14 @@ let obj = new DefaultObject({
   y: undefined,
   z: "Zeta"
 }, defaultFn, true);
-console.log(Object.keys(obj).join(',')); // Se espera: "x,y,z"
+console.log(Object.keys(obj).join(',')); // "x,y,z"
 
-console.log(Object.values(obj).join(',')); // Al acceder a "y" (que es undefined) se aplica el default: "10,y missing,Zeta"
+console.log(Object.values(obj).join(',')); // "10, missing, Zeta"
 
-console.log(Object.entries(obj).map(pair => pair.join(':')).join(',')); // Se espera: "x:10,y:y missing,z:Zeta"
+console.log(Object.entries(obj).map(pair => pair.join(':')).join(',')); // "x:10,y:y missing,z:Zeta"
 
 console.log(obj.hasOwnProperty('x')); // true
 
-console.log(obj.hasOwnProperty('y')); // true (existe, aunque su valor sea undefined)
+console.log(obj.hasOwnProperty('y')); // true 
 
 console.log(obj.hasOwnProperty('w')); // false
