@@ -16,8 +16,6 @@ module.exports = function defaultVector({ types: t }) {
           hasElseExpression = true;
           const elseExpression = path.node.elseExpression;
           const properties = path.node.properties;
-          properties.pop();
-          
           const classInstance = t.newExpression(
             t.identifier("DefaultObject"),
             [

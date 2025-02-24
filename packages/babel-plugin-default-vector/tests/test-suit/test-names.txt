@@ -17,3 +17,9 @@ standarMethods
 propertyManipulation
 inheritance
 edgeCaseMethods
+inheritance2
+configuration
+users
+prices
+setCheckInside
+secretKeys

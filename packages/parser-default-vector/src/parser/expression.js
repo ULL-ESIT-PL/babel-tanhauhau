@@ -1535,7 +1535,7 @@ export default class ExpressionParser extends LValParser {
     const propHash: any = Object.create(null);
     let first = true;
     const node = this.startNode();
-    let elseNode = null; // Para almacenar la expresión else
+    let elseNode = null;
   
     node.properties = [];
     this.next();
@@ -1552,40 +1552,32 @@ export default class ExpressionParser extends LValParser {
         }
       }
   
-      // Verificar si encontramos `else`
+      // Coded by Adrián Mora Rodríguez
       if (this.match(tt._else)) {
         if (elseNode) {
           this.raise(this.state.start, "Duplicate 'else' clause in object literal");
         }
-  
         this.next();
         elseNode = this.parseExpression();
-  
-        // Si después de `else` hay otra propiedad, es un error
         if (!this.match(close)) {
-          this.raise(this.state.start, "`else` must be the last property in an object literal.");
+          this.raise(this.state.start, "else must be the last property in an object literal.");
         }
         continue;
       }
-  
-      // Si ya se encontró `else`, no debería haber más propiedades
       if (elseNode) {
         this.raise(this.state.start, "No properties allowed after 'else' in an object literal.");
       }
-  
       const prop = this.parseObjectMember(isPattern, refExpressionErrors);
       if (!isPattern) {
         this.checkDuplicatedProto(prop, propHash, refExpressionErrors);
       }
-  
       if (prop.shorthand) {
         this.addExtra(prop, "shorthand", true);
       }
-  
       node.properties.push(prop);
     }
   
-    // Agregar la propiedad `else` si existe
+    // Agregar la propiedad else si existe
     if (elseNode) {
       node.elseExpression = elseNode;
     }
@@ -1596,7 +1588,6 @@ export default class ExpressionParser extends LValParser {
     } else if (isRecord) {
       type = "RecordExpression";
     }
-  
     return this.finishNode(node, type);
   }
   

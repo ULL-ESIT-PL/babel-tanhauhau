@@ -1,4 +1,4 @@
-let array = new DefaultVector([10, 15, 30], checkUndefined=true);
+let array = new DefaultVector([10, 15, 30], checkInside=true);
 array.setElseExpression(i => {throw new Error(`Se ha intentado acceder a la posición: ${i} que no existe`)});
 
 try {
