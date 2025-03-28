@@ -1,4 +1,5 @@
 let fn = (x) => x * x;
-let array = new DefaultObject([1, 2, 3], fn, true);
-let arraySon = Object.create(array);
-console.log(arraySon)
+let padre = new DefaultVector([1, 2, 3], fn);
+let arraySon = Object.create(padre);
+debugger;
+console.log(arraySon); // DefaultVector {}

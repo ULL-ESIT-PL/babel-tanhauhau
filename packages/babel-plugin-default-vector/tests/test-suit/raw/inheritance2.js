@@ -1,7 +1,7 @@
 let defaultFn = (key) => key + " missing";
 let grandParentObj = new DefaultObject({
   gp: "Me",
-}, defaultFn, true);
+}, defaultFn);
 
 let parentObj = Object.create(grandParentObj);
 parentObj.p = "Me";

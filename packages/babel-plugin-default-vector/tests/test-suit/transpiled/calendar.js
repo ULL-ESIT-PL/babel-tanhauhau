@@ -1,11 +1,6 @@
 const {
-  DefaultObject: DefaultObject
-} = require("/Users/adrian/Desktop/Clases/Cuarto/segundo_cuatri/TFG/babel-tanhauhau/packages/babel-plugin-default-vector/src/support.js");
-
-const {
   DefaultVector: DefaultVector
 } = require("/Users/adrian/Desktop/Clases/Cuarto/segundo_cuatri/TFG/babel-tanhauhau/packages/babel-plugin-default-vector/src/support.js");
-
 let calendar = new DefaultVector([{
   event: "New Year's Day",
   todo: "Something"
@@ -14,8 +9,8 @@ let calendar = new DefaultVector([{
   date = parseInt(date) + 1;
   let unknown = "Day " + date + " do not have an event";
   return unknown;
-}); //Pushing a new event on an specific date
-
+});
+//Pushing a new event on an specific date
 calendar[5] = {
   event: "Reyes Magos",
   todo: "Regalos"

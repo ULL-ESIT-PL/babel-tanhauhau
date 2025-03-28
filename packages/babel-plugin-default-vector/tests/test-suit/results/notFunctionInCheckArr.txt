@@ -1,0 +1,1 @@
+checkfn must be a function

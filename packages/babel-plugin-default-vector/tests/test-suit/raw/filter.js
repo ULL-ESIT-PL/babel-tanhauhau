@@ -1,5 +1,5 @@
 let arr = new DefaultVector([
-  5, 10, 15, 20], checkInside=false);
+  5, 10, 15, 20], {checkInside:false});
 arr.setCheckInside(true)
 arr.setElseExpression(i => 100 + i);
 

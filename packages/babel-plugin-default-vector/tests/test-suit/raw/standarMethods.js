@@ -3,7 +3,7 @@ let obj = new DefaultObject({
   x: 10,
   y: undefined,
   z: "Zeta"
-}, defaultFn, true);
+}, defaultFn);
 
 console.log(Object.keys(obj).join(',')); // "x,y,z"
 console.log(Object.values(obj).join(',')); // "10, missing, Zeta"

@@ -4,7 +4,7 @@ let obj = new DefaultObject({
   b: "Beta",
   c: undefined,
   d: null,
-}, elseExpression, true);
+}, elseExpression, {checkInside: true});
 
 console.log(obj.a); // "Alpha"
 console.log(obj.b); // "Beta"

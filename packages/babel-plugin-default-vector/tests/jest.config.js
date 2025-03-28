@@ -3,7 +3,8 @@ module.exports = {
   globals: {
     "jest-html-reporters": {
       "runtimeOptions": {
-        "allowProtoPropertiesByDefault": true
+        "allowProtoPropertiesByDefault": true,
+        "allowProtoMethodsByDefault": true
       }
     }
   },

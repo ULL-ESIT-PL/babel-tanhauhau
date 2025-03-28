@@ -5,7 +5,8 @@
   "author": "Adrian Mora Rodriguez",
   "main": "src/default.js",
   "dependencies": {
-    "@ull-esit-pl/parser-default-vector": "^1.0.7"
+    "@ull-esit-pl/parser-default-vector": "^1.0.7",
+    "karma-coverage-istanbul-reporter": "^3.0.3"
   },
   "scripts": {
     "test": "jest tests/index.test.js",
@@ -29,5 +30,8 @@
     "ecmascript",
     "@babel/plugin"
   ],
-  "gitHead": "f8c849038157f63089fd4ef21d1d57e110b33a76"
+  "gitHead": "f8c849038157f63089fd4ef21d1d57e110b33a76",
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.26.8"
+  }
 }

@@ -8,13 +8,18 @@ function generarClaveSecreta(longitud = 16) {
   return claveSecreta;
 }
 
-const clavesSecretas = Array.from({ length: 5 }, () => generarClaveSecreta());
+let clavesSecretas = [];
+for (let i = 0; i < 5; i++) {
+  clavesSecretas.push(generarClaveSecreta());
+}
+
 let keys = {
   "Ava": "jnf83",
   "Sofia": "?d[3a",
   "Root": clavesSecretas[0],
   else x => `Error, intento de acceso a una clave secreta: ${x}`
 }
+
 let checkfn = (x) => {
   for (let clave of clavesSecretas) {
     if (x === clave) {

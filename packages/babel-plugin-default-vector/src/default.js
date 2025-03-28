@@ -2,6 +2,7 @@ const parser = require("../../parser-default-vector/lib/index.js");
 const types = require('@babel/types');
 const path = require('path');
 let hasElseExpression = false;
+let hasElseExpressionObject = false;
 let alreadyImportedVector = false;
 let alreadyImportedObject = false;
 
@@ -13,7 +14,7 @@ module.exports = function defaultVector({ types: t }) {
     visitor: {
       ObjectExpression(path) {
         if (path.node.elseExpression) {
-          hasElseExpression = true;
+          hasElseExpressionObject = true;
           const elseExpression = path.node.elseExpression;
           const properties = path.node.properties;
           const classInstance = t.newExpression(
@@ -27,7 +28,7 @@ module.exports = function defaultVector({ types: t }) {
           path.replaceWith(classInstance);
         }
         
-        if (hasElseExpression && !alreadyImportedObject) {
+        if (hasElseExpressionObject && !alreadyImportedObject) {
           path.findParent(p => p.isProgram()).unshiftContainer("body",
             t.variableDeclaration("const", [
               t.variableDeclarator(
@@ -41,9 +42,6 @@ module.exports = function defaultVector({ types: t }) {
             ])
           );
           alreadyImportedObject = true;
-        }
-        if (path.node.elseExpression) {
-          delete path.node.elseExpression;
         }
       },
       ArrayExpression(path) {
@@ -116,6 +114,8 @@ module.exports = function defaultVector({ types: t }) {
         exit(path) {
           alreadyImportedVector = false;
           alreadyImportedObject = false;
+          hasElseExpression = false;
+          hasElseExpressionObject = false;
         }
       }
     }

@@ -1,19 +1,19 @@
-class DefaultVector extends Array { // TODO: Comentar posible limitación en el ejemplo inheritanceArray.js
-  constructor(arr, fn = undefined, checkInside = true, checkfn = undefined) {
+class DefaultVector extends Array {
+  constructor(arr, fn = undefined, options = {}) {
       super(...(Array.isArray(arr) ? arr : []));
+      const {
+        checkInside = true,
+        checkfn = (value) => value === undefined,
+      } = options;
       this.checkInside = checkInside;
       this.fn = fn;
-      if (checkfn === undefined || typeof checkfn !== 'function') {
-        checkfn = function (value) {
-          return value === undefined
-        }
-      }
       this.checkfn = checkfn;
       return new Proxy(this, {
           [Symbol.isConcatSpreadable]: true,
           length: arr.length,
           get: (target, prop, receiver) => {
             if (typeof prop === "symbol" && prop === Symbol.isConcatSpreadable) return true;
+            if (typeof prop === "symbol") return target[prop]; // Es esto lo que hace que funcione el ejemplo inheritanceArray.js
             if (typeof target[prop] === "function") {
               return (...args) => {
                 let result = target[prop].apply(target, args);
@@ -28,14 +28,14 @@ class DefaultVector extends Array { // TODO: Comentar posible limitación en el 
             if (!isNaN(index) && index >= 0) {
               if (index >= target.length) {
                 if (typeof this.fn === "function") {
-                  return this.fn(index);
+                  return this.fn(index, target);
                 }
                 return this.fn;
               }
               let value = target[index];
               if (this.checkInside && target.checkfn(value)) {
                 if (typeof this.fn === "function") {
-                  return this.fn(index);
+                  return this.fn(index, target);
                 }
                 return this.fn;
               }
@@ -50,7 +50,7 @@ class DefaultVector extends Array { // TODO: Comentar posible limitación en el 
         }
       });
   }
-  setCheckInside(CheckInside) { // TODO: Hacer que puedas cambiar el comprobar si es undefined, comprueba si una función da true con el valor interno
+  setCheckInside(CheckInside) {
     this.checkInside = CheckInside;
   }
   setElseExpression(fn) {
@@ -66,38 +66,35 @@ class DefaultVector extends Array { // TODO: Comentar posible limitación en el 
 }
 
 class DefaultObject {
-  constructor(obj = {}, fn = undefined, checkInside = true, checkfn= undefined) { 
+  constructor(obj, fn = undefined, options = {}) { 
+    const {
+      checkInside = true,
+      checkfn = (value) => value === undefined,
+    } = options;
     this.data = { ...obj };
     this.checkInside = checkInside;
     this.fn = fn;
-    if (checkfn === undefined || typeof checkfn !== 'function') {
-      checkfn = function (value) {
-        return value === undefined
-      }
-    }
     this.checkfn = checkfn;
     return new Proxy(this, {
       get(target, prop, receiver) {
         if (!(["data", "fn", "checkInside", "checkfn"].includes(prop)) && (prop in target)) {
-          return Reflect.get(target, prop, receiver); // Esto es lo que cambié, esto es debido a como maneja js los proxies
+          return Reflect.get(target, prop, receiver);
         }
         if (prop in target.data) {
           let value = target.data[prop];
           if (target.checkInside && target.checkfn(value) && typeof target.fn === 'function') {
-            return target.fn(prop);
+            return target.fn(prop, target.data);
           }
           if (typeof value === 'function') {
             return function(...args) {
               let result = value.apply(target, args);
-              return (typeof result === 'object' && result !== null)
-                ? new DefaultObject(result, target.fn, target.checkInside)
-                : result;
+              return result;
             };
           }
           return value;
         }
         if (target.checkInside && typeof target.fn === 'function') {
-          return target.fn(prop);
+          return target.fn(prop, target.data);
         }
         return undefined;
       },
@@ -127,12 +124,6 @@ class DefaultObject {
               writable: desc.writable
             };
           }
-          return {
-            configurable: true,
-            enumerable: true,
-            value: target.data[prop],
-            writable: true
-          };
         }
         return Reflect.getOwnPropertyDescriptor(target, prop);
       },
@@ -154,11 +145,9 @@ class DefaultObject {
   setCheckInside(checkInside) {
     this.checkInside = checkInside;
   }
-  
   setElseExpression(fn) {
     this.fn = fn;
   }
-
   setCheckfn(checkfn) {
     if (typeof checkfn === 'function') {
       this.checkfn = checkfn;
