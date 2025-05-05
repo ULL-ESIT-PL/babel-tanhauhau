@@ -5,7 +5,7 @@ let defaultFn = key => key + " not available";
 let obj = new DefaultObject({
   a: "A",
   b: undefined
-}, defaultFn, true);
+}, defaultFn);
 
 // Agregamos propiedad no enumerable
 Object.defineProperty(obj, 'hidden', {

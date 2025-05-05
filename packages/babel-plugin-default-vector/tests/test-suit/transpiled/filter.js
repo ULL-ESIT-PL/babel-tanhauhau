@@ -1,7 +1,9 @@
 const {
   DefaultVector: DefaultVector
 } = require("/Users/adrian/Desktop/Clases/Cuarto/segundo_cuatri/TFG/babel-tanhauhau/packages/babel-plugin-default-vector/src/support.js");
-let arr = new DefaultVector([5, 10, 15, 20], checkInside = false);
+let arr = new DefaultVector([5, 10, 15, 20], {
+  checkInside: false
+});
 arr.setCheckInside(true);
 arr.setElseExpression(i => 100 + i);
 let filtered = arr.filter(x => x > 10); // [15, 20]

@@ -119,6 +119,38 @@ Some resources:
 
 The Babel repo is managed as a [monorepo](doc/design/monorepo.md) that is composed of many [npm packages](packages/README.md).
 
+
+## Plugin: `babel-plugin-default-vector`
+
+This plugin extends Babel with support for **default values in objects and arrays**, using `else` clauses. It's part of the effort to make JavaScript more expressive and adaptable.
+
+### Features
+
+- Support for new `else` syntax in object and array expressions.
+- Integration with custom runtime classes like `DefaultObject` and `DefaultVector`.
+- Fully configurable fallback behavior for missing keys or indices.
+
+### Example
+
+**Input**
+
+```js
+const obj = {
+  a: 1,
+  b: 2,
+  else (key) => 0
+};
+```
+**Output**
+
+```js
+const obj = new DefaultObject({
+  a: 1,
+  b: 2
+}, (key) => 0);
+```
+
+
 ## License
 
 [MIT](LICENSE)

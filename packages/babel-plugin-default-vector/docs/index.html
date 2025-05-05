@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="DefaultObject.html">DefaultObject</a><ul class='methods'><li data-type='method'><a href="DefaultObject.html#setCheckInside">setCheckInside</a></li><li data-type='method'><a href="DefaultObject.html#setCheckfn">setCheckfn</a></li><li data-type='method'><a href="DefaultObject.html#setElseExpression">setElseExpression</a></li></ul></li><li><a href="DefaultVector.html">DefaultVector</a><ul class='methods'><li data-type='method'><a href="DefaultVector.html#setCheckInside">setCheckInside</a></li><li data-type='method'><a href="DefaultVector.html#setCheckfn">setCheckfn</a></li><li data-type='method'><a href="DefaultVector.html#setElseExpression">setElseExpression</a></li></ul></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+    <section class="package">
+        <h3> </h3>		
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    <section class="readme usertext">
+        <article><h1>Documentación del plugin babel-plugin-default-vector</h1>
+<h2>Adrián Mora Rodríguez</h2>
+<h3>Coverage</h3>
+<p>Para ver el coverage <a href="../coverage/index.html">utilice este enlace</a></p>
+<h3>Introducción</h3>
+<p>Este plugin de Babel está diseñado para transformar el uso de los vectores y objetos en el código JavaScript. Su objetivo es facilitar el manejo de vectores y objetos, permitiendo la creación de vectores y objetos por defecto en el código. Esto es especialmente útil para evitar errores comunes al trabajar con estos tipos de datos.</p>
+<h3>Instalación</h3>
+<p>Para instalar el plugin, puedes usar npm. Asegúrate de tener Babel instalado en tu proyecto antes de proceder con la instalación del plugin.</p>
+<pre class="prettyprint source lang-bash"><code>npm install babel-plugin-default-vector --save-dev
+</code></pre>
+<h3>Uso</h3>
+<p>Para utilizar el plugin, debes agregarlo a la configuración de Babel en tu proyecto. Puedes hacerlo en el archivo <code>.babelrc</code> o en la configuración de Babel en tu <code>package.json</code>.</p>
+<pre class="prettyprint source lang-json"><code>{
+  &quot;plugins&quot;: [
+    &quot;default-vector&quot;
+  ]
+}
+</code></pre>
+<h3>Ejemplo de uso</h3>
+<p>A continuación se muestra un ejemplo de cómo el plugin transforma el código JavaScript:</p>
+<pre class="prettyprint source lang-javascript"><code>// Código original
+const vector = [1, 2, 3, else (idx, arr) => throw new Error('Invalid index')];
+const obj = { a: 1, b: 2, else (key, obj) => throw new Error('Invalid key') };
+console.log(vector[5]); // Error: Invalid index
+console.log(obj.c); // Error: Invalid key
+</code></pre>
+<pre class="prettyprint source lang-javascript"><code>// Código transformado
+const vector = new DefaultVector([1, 2, 3], (idx, arr) => throw new Error('Invalid index'));
+const obj = new DefaultObject({ a: 1, b: 2 }, (key, obj) => throw new Error('Invalid key'));
+console.log(vector[5]); // Error: Invalid index
+console.log(obj.c); // Error: Invalid key
+</code></pre>
+<h3>Conclusión</h3>
+<p>El plugin <code>babel-plugin-default-vector</code> es una herramienta útil para facilitar el manejo de vectores y objetos en JavaScript. Al transformar el código, permite evitar errores comunes y mejorar la legibilidad del mismo. Si trabajas con vectores y objetos en tu proyecto, considera utilizar este plugin para simplificar tu código.</p>
+<h3>Contribuciones</h3>
+<p>Si deseas contribuir al desarrollo del plugin, puedes hacerlo a través de pull requests en el repositorio de GitHub. Agradecemos cualquier mejora o corrección que puedas aportar.</p>
+<h3>Licencia</h3>
+<p>Este plugin está bajo la licencia MIT. Puedes usarlo, modificarlo y distribuirlo según los términos de la licencia.</p>
+<h3>Contacto</h3>
+<p>Si tienes preguntas o sugerencias sobre el plugin, no dudes en contactarme a través de mi perfil de GitHub o por correo electrónico. Estoy abierto a recibir comentarios y mejorar el plugin con la ayuda de la comunidad.</p></article>
+    </section>
+
+
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Mon May 05 2025 10:39:48 GMT+0100 (hora de verano de Europa occidental) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

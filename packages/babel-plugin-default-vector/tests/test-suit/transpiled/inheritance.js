@@ -5,7 +5,7 @@ let defaultFn = key => key + " missing";
 let parentObj = new DefaultObject({
   p: "parent",
   q: undefined
-}, defaultFn, true);
+}, defaultFn);
 let childObj = Object.create(parentObj);
 childObj.c = "child";
 console.log(childObj.c); // "child" (propiedad propia)

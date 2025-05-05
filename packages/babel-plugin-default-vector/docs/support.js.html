@@ -1,4 +1,51 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>support.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="DefaultObject.html">DefaultObject</a><ul class='methods'><li data-type='method'><a href="DefaultObject.html#setCheckInside">setCheckInside</a></li><li data-type='method'><a href="DefaultObject.html#setCheckfn">setCheckfn</a></li><li data-type='method'><a href="DefaultObject.html#setElseExpression">setElseExpression</a></li></ul></li><li><a href="DefaultVector.html">DefaultVector</a><ul class='methods'><li data-type='method'><a href="DefaultVector.html#setCheckInside">setCheckInside</a></li><li data-type='method'><a href="DefaultVector.html#setCheckfn">setCheckfn</a></li><li data-type='method'><a href="DefaultVector.html#setElseExpression">setElseExpression</a></li></ul></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">support.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * @class DefaultVector
  * @extends Array
  * @classdesc Clase que extiende Array y permite definir valores por defecto dinámicos cuando se accede a índices no existentes o que no cumplen un criterio personalizado.
@@ -24,7 +71,7 @@ class DefaultVector extends Array {
           [Symbol.isConcatSpreadable]: true,
           length: arr.length,
           get: (target, prop, receiver) => {
-            if (typeof prop === "symbol" && prop === Symbol.isConcatSpreadable) return true;
+            if (typeof prop === "symbol" &amp;&amp; prop === Symbol.isConcatSpreadable) return true;
             if (typeof prop === "symbol") return target[prop];
             if (typeof target[prop] === "function") {
               return (...args) => {
@@ -34,10 +81,10 @@ class DefaultVector extends Array {
             }
             if (typeof target[prop] === "string") return target[prop];
             let index;
-            if (typeof prop === "string" && !isNaN(index = parseInt(prop))) {
+            if (typeof prop === "string" &amp;&amp; !isNaN(index = parseInt(prop))) {
               index = Number(prop);
             }
-            if (!isNaN(index) && index >= 0) {
+            if (!isNaN(index) &amp;&amp; index >= 0) {
               if (index >= target.length) {
                 if (typeof this.fn === "function") {
                   return this.fn(index, target);
@@ -45,7 +92,7 @@ class DefaultVector extends Array {
                 return this.fn;
               }
               let value = target[index];
-              if (this.checkInside && target.checkfn(value)) {
+              if (this.checkInside &amp;&amp; target.checkfn(value)) {
                 if (typeof this.fn === "function") {
                   return this.fn(index, target);
                 }
@@ -122,12 +169,12 @@ class DefaultObject {
     this.checkfn = checkfn;
     return new Proxy(this, {
       get(target, prop, receiver) {
-        if (!(["data", "fn", "checkInside", "checkfn"].includes(prop)) && (prop in target)) {
+        if (!(["data", "fn", "checkInside", "checkfn"].includes(prop)) &amp;&amp; (prop in target)) {
           return Reflect.get(target, prop, receiver);
         }
         if (prop in target.data) {
           let value = target.data[prop];
-          if (target.checkInside && target.checkfn(value) && typeof target.fn === 'function') {
+          if (target.checkInside &amp;&amp; target.checkfn(value) &amp;&amp; typeof target.fn === 'function') {
             return target.fn(prop, target.data);
           }
           if (typeof value === 'function') {
@@ -138,7 +185,7 @@ class DefaultObject {
           }
           return value;
         }
-        if (target.checkInside && typeof target.fn === 'function') {
+        if (target.checkInside &amp;&amp; typeof target.fn === 'function') {
           return target.fn(prop, target.data);
         }
         return undefined;
@@ -159,7 +206,7 @@ class DefaultObject {
         }
       },
       getOwnPropertyDescriptor(target, prop) {
-        if (!["data", "fn", "checkInside", "checkfn"].includes(prop) && (prop in target.data)) {
+        if (!["data", "fn", "checkInside", "checkfn"].includes(prop) &amp;&amp; (prop in target.data)) {
           let desc = Object.getOwnPropertyDescriptor(target.data, prop);
           if (desc) {
             return {
@@ -230,4 +277,28 @@ class DefaultObject {
 module.exports = {
   DefaultVector,
   DefaultObject
-};
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Mon May 05 2025 10:39:48 GMT+0100 (hora de verano de Europa occidental) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

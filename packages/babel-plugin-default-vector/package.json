@@ -6,11 +6,13 @@
   "main": "src/default.js",
   "dependencies": {
     "@ull-esit-pl/parser-default-vector": "^1.0.7",
+    "docdash": "^2.0.2",
     "karma-coverage-istanbul-reporter": "^3.0.3"
   },
   "scripts": {
     "test": "jest tests/index.test.js",
-    "cov": "jest tests/index.test.js --coverage; open coverage/lcov-report/index.html"
+    "cov": "npx c8 --reporter=html --reporter=text npx jest tests/index.test.js; open coverage/index.html",
+    "covClean": "rm -rf coverage"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,7 @@
   ],
   "gitHead": "f8c849038157f63089fd4ef21d1d57e110b33a76",
   "devDependencies": {
-    "@babel/eslint-parser": "^7.26.8"
+    "@babel/eslint-parser": "^7.26.8",
+    "jsdoc": "^4.0.4"
   }
 }

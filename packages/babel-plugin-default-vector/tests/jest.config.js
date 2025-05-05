@@ -1,5 +1,5 @@
 module.exports = {
-  coverageReporters: ["json", "text", "lcov", "html"],
+  coverageReporters: ['text', 'html', 'lcov', 'clover'],
   globals: {
     "jest-html-reporters": {
       "runtimeOptions": {

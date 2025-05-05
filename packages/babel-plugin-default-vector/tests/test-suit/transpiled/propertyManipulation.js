@@ -5,7 +5,7 @@ let defaultFn = key => key + " undefined";
 let obj = new DefaultObject({
   a: 1,
   b: 2
-}, defaultFn, true);
+}, defaultFn);
 console.log(obj.a); // 1
 obj.a = 10;
 console.log(obj.a); // 10
