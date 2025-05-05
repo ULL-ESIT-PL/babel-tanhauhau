@@ -1,11 +1,11 @@
 {
   "name": "@ull-esit-pl/babel-plugin-default-vector",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Plugin to transform default vector syntax",
   "author": "Adrian Mora Rodriguez",
   "main": "src/default.js",
   "dependencies": {
-    "@ull-esit-pl/parser-default-vector": "^1.0.7",
+    "@ull-esit-pl/parser-default-vector": "^1.0.8",
     "docdash": "^2.0.2",
     "karma-coverage-istanbul-reporter": "^3.0.3"
   },
@@ -32,7 +32,7 @@
     "ecmascript",
     "@babel/plugin"
   ],
-  "gitHead": "f8c849038157f63089fd4ef21d1d57e110b33a76",
+  "gitHead": "ccd361108494dc5e3343c6de3e72cfcccf560d34",
   "devDependencies": {
     "@babel/eslint-parser": "^7.26.8",
     "jsdoc": "^4.0.4"
